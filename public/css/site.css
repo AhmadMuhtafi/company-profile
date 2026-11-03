@@ -1,0 +1,256 @@
+/* ==========================================================
+   Company Profile - gaya "lembar gambar kerja"
+   Ubah warna aksen cukup lewat variabel --blue di bawah.
+   ========================================================== */
+:root {
+    --ink: #1C2127;
+    --muted: #5E6873;
+    --rule: #CBD1D8;
+    --concrete: #E6E9EC;
+    --paper: #F5F7F6;
+    --blue: #1E4FD6;
+    --blue-d: #163BA3;
+    --blue-soft: #E8EEFC;
+    --grid: rgba(30, 79, 214, .06);
+    --grid-major: rgba(30, 79, 214, .12);
+    --font-head: 'Archivo', system-ui, sans-serif;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
+
+    --bs-body-font-family: var(--font-body);
+    --bs-body-color: var(--ink);
+    --bs-body-font-size: 1.05rem;
+    --bs-body-line-height: 1.6;
+    --bs-link-color-rgb: 30, 79, 214;
+}
+
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; background: #fff; }
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-stretch: 92%;
+    letter-spacing: -.015em;
+    line-height: 1.1;
+    color: var(--ink);
+}
+h1 { font-size: clamp(2.4rem, 5.2vw, 4.1rem); font-weight: 800; }
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+h3 { font-size: 1.2rem; }
+p { max-width: 64ch; }
+.text-muted-2 { color: var(--muted); }
+
+a:focus-visible, button:focus-visible, .form-control:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+}
+
+/* ---------- Tombol ---------- */
+.btn {
+    border-radius: 2px;
+    font-family: var(--font-head);
+    font-weight: 600;
+    padding: .8rem 1.5rem;
+}
+.btn-blue { background: var(--blue); border: 1px solid var(--blue); color: #fff; }
+.btn-blue:hover { background: var(--blue-d); border-color: var(--blue-d); color: #fff; }
+.btn-line { background: transparent; border: 1px solid var(--ink); color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: #fff; }
+.btn-line-light { background: transparent; border: 1px solid rgba(255,255,255,.55); color: #fff; }
+.btn-line-light:hover { background: #fff; color: var(--ink); }
+
+/* ---------- Navigasi ---------- */
+.site-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 1040;
+}
+.wordmark {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-stretch: 92%;
+    font-size: 1.2rem;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    text-decoration: none;
+}
+.site-nav .nav-link {
+    color: var(--ink);
+    font-weight: 600;
+    padding: .55rem .9rem;
+}
+.site-nav .nav-link:hover { color: var(--blue); }
+.site-nav .nav-link.active { box-shadow: inset 0 -2px 0 var(--blue); }
+@media (max-width: 991px) {
+    .site-nav .nav-link.active { box-shadow: inset 3px 0 0 var(--blue); }
+}
+
+/* ---------- Hero dan lembar ---------- */
+.grid-sheet {
+    background-color: #fff;
+    background-image:
+        linear-gradient(var(--grid-major) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    background-position: -1px -1px;
+}
+.hero { padding: 5rem 0 0; }
+.hero h1 { max-width: 17ch; }
+.hero .lead { font-size: 1.2rem; color: var(--muted); margin-top: 1.25rem; }
+.hero-photo { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; border: 1.5px solid var(--ink); background: var(--concrete); }
+
+/* Kotak ringkasan seperti title block gambar kerja */
+.titleblock { margin: 4rem 0 -3.25rem; border: 1.5px solid var(--ink); background: #fff; position: relative; z-index: 2; }
+.tb-head {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: .55rem 1.25rem; border-bottom: 1.5px solid var(--ink);
+    font-family: var(--font-head); font-weight: 600; font-size: .9rem; color: var(--muted);
+}
+.tb-grid { display: grid; grid-template-columns: repeat(var(--cols, 4), 1fr); }
+.tb-cell { padding: 1.15rem 1.25rem 1.25rem; border-left: 1.5px solid var(--ink); }
+.tb-cell:first-child { border-left: 0; }
+.tb-val { font-family: var(--font-head); font-weight: 800; font-size: clamp(2rem, 3.8vw, 3rem); line-height: 1; color: var(--ink); }
+.tb-label { font-size: .95rem; color: var(--muted); margin-top: .45rem; }
+@media (max-width: 767px) {
+    .tb-grid { grid-template-columns: repeat(2, 1fr); }
+    .tb-cell:nth-child(odd) { border-left: 0; }
+    .tb-cell:nth-child(n+3) { border-top: 1.5px solid var(--ink); }
+}
+
+.sheet { padding: 5rem 0; }
+.sheet-alt { background: var(--paper); }
+.after-titleblock { padding-top: 8rem; }
+@media (min-width: 992px) { .sticky-head { position: sticky; top: 6.5rem; } }
+
+.page-head { padding: 4rem 0 3rem; border-bottom: 1.5px solid var(--ink); }
+.page-head h1 { font-size: clamp(2.2rem, 4.4vw, 3.4rem); }
+.crumb { font-size: .95rem; color: var(--muted); margin-bottom: 1rem; }
+.crumb a { color: var(--muted); text-decoration: none; }
+.crumb a:hover { color: var(--blue); }
+.crumb span { margin: 0 .4rem; }
+
+/* ---------- Daftar bergaris ---------- */
+.ruled { list-style: none; margin: 0; padding: 0; border-top: 1.5px solid var(--ink); }
+.ruled > li {
+    display: grid; grid-template-columns: 48px 1fr; gap: 1rem;
+    padding: 1.5rem 0; border-bottom: 1px solid var(--rule);
+}
+.ruled i { font-size: 1.6rem; color: var(--blue); line-height: 1.2; }
+.ruled h3 { margin-bottom: .35rem; }
+.ruled p { margin: 0; color: var(--muted); }
+
+/* ---------- Kartu proyek ---------- */
+.pcard { display: block; color: inherit; text-decoration: none; }
+.pcard .thumb { aspect-ratio: 4 / 3; background: var(--concrete); overflow: hidden; display: grid; place-items: center; }
+.pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.pcard:hover img { transform: scale(1.03); }
+.pcard .thumb i { font-size: 2.5rem; color: var(--muted); }
+.pcard .cap {
+    display: flex; justify-content: space-between; gap: 1rem;
+    border-top: 1.5px solid var(--ink); margin-top: .85rem; padding-top: .75rem;
+}
+.pcard h3 { font-size: 1.1rem; margin: 0 0 .15rem; }
+.pcard:hover h3 { color: var(--blue); }
+.pcard .meta { font-size: .92rem; color: var(--muted); }
+.pcard .yr { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+
+/* ---------- Filter kategori ---------- */
+.tabs { display: flex; flex-wrap: wrap; gap: 0 1.75rem; border-bottom: 1px solid var(--rule); }
+.tabs a {
+    padding: .8rem 0; color: var(--muted); text-decoration: none; font-weight: 600;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tabs a:hover { color: var(--ink); }
+.tabs a.active { color: var(--ink); border-bottom-color: var(--blue); }
+
+/* ---------- Logo klien ---------- */
+.logos {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    border-top: 1px solid var(--rule); border-left: 1px solid var(--rule);
+}
+.logos > div {
+    border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+    height: 100px; display: grid; place-items: center; padding: 1rem; background: #fff;
+}
+.logos img { max-height: 46px; max-width: 100%; filter: grayscale(1); opacity: .75; transition: filter .2s, opacity .2s; }
+.logos > div:hover img { filter: none; opacity: 1; }
+.logos span { font-family: var(--font-head); font-weight: 700; color: var(--muted); text-align: center; }
+
+/* ---------- Tabel keterangan ---------- */
+.spec { border: 1.5px solid var(--ink); background: #fff; }
+.spec > div { display: flex; justify-content: space-between; gap: 1.5rem; padding: .85rem 1.1rem; border-top: 1px solid var(--rule); }
+.spec > div:first-child { border-top: 0; }
+.spec dt { font-weight: 400; color: var(--muted); }
+.spec dd { margin: 0; font-weight: 600; color: var(--ink); text-align: right; }
+
+/* ---------- Alur kerja ---------- */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); border-top: 1.5px solid var(--ink); }
+.step { padding: 1.4rem 1.5rem 1.6rem 0; }
+.step b { display: block; font-family: var(--font-head); font-weight: 800; font-size: 2rem; color: var(--blue); line-height: 1; margin-bottom: .75rem; }
+.step h3 { font-size: 1.1rem; margin-bottom: .35rem; }
+.step p { color: var(--muted); margin: 0; font-size: 1rem; }
+
+/* ---------- Dokumen dan tim ---------- */
+.docrow {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: 1rem 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; font-weight: 600;
+}
+.docrow:hover { color: var(--blue); }
+.docrow i { font-size: 1.25rem; }
+.person { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--rule); }
+.person .ph {
+    width: 56px; height: 56px; background: var(--concrete); display: grid; place-items: center;
+    font-family: var(--font-head); font-weight: 800; color: var(--ink); flex-shrink: 0;
+}
+.person small { color: var(--muted); display: block; }
+
+/* ---------- Galeri proyek ---------- */
+.gallery .carousel-item { aspect-ratio: 16 / 10; background: var(--concrete); }
+.gallery .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+.carousel-indicators.thumbs {
+    position: static; margin: .75rem 0 0; justify-content: flex-start; gap: .5rem; flex-wrap: wrap;
+}
+.carousel-indicators.thumbs [data-bs-target] {
+    width: 92px; height: auto; aspect-ratio: 4 / 3; margin: 0; padding: 0; text-indent: 0; box-sizing: border-box;
+    border: 1px solid var(--rule); background: #fff; opacity: .65; overflow: hidden;
+}
+.carousel-indicators.thumbs [data-bs-target].active { opacity: 1; border: 2px solid var(--blue); }
+.carousel-indicators.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---------- Form dan peta ---------- */
+.form-label { font-weight: 600; font-size: .95rem; }
+.form-control, .form-select { border-radius: 2px; border: 1px solid #8A95A1; padding: .75rem .95rem; }
+.form-control:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.map-wrap { border: 1.5px solid var(--ink); }
+.map-wrap iframe { width: 100%; height: 340px; border: 0; display: block; }
+
+/* ---------- Ajakan dan footer ---------- */
+.cta { background: var(--ink); color: #fff; padding: 4rem 0; }
+.cta h2 { color: #fff; }
+.cta p { color: rgba(255,255,255,.75); }
+
+.site-footer { background: var(--ink); color: rgba(255,255,255,.72); padding: 4rem 0 1.5rem; font-size: .98rem; }
+.site-footer h4 { font-size: 1rem; color: #fff; margin-bottom: 1rem; }
+.site-footer a { color: rgba(255,255,255,.72); text-decoration: none; }
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li + li { margin-top: .5rem; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.15); margin-top: 3rem; padding-top: 1.25rem; font-size: .9rem; }
+
+.wa-float {
+    position: fixed; right: 18px; bottom: 18px; width: 56px; height: 56px; border-radius: 50%;
+    background: #1FA855; color: #fff; display: grid; place-items: center; font-size: 1.7rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,.25); z-index: 1050; text-decoration: none;
+}
+.wa-float:hover { background: #178a45; color: #fff; }
+
+.empty-note { border: 1px dashed var(--rule); padding: 2.5rem 1rem; text-align: center; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+}
